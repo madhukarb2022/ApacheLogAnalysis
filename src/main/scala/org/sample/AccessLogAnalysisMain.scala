@@ -21,9 +21,9 @@ object AccessLogAnalysisMain {
       .master("local[1]")
       .appName("ApacheAccessLogAnalysis")
       .config("spark.testing.memory", "3147480000")//Docker fix
-      .getOrCreate();
+      .getOrCreate()
     logger.info(s"APP Name: ${spark.sparkContext.appName}, Deploy Mode: ${spark.sparkContext.deployMode}" +
-      s", Master: ${spark.sparkContext.master}");
+      s", Master: ${spark.sparkContext.master}")
 
     //Read the source (FTP/Github)
     val sourceDF: DataFrame = readDataSource(spark, dataSource1, dataSource2)
@@ -33,7 +33,7 @@ object AccessLogAnalysisMain {
     val parsedDF: DataFrame = applyRegExParser(sourceDF, spark)
     logger.info("Applied regular expressions")
 
-    val n: Int = 3  //variable to get the top 2 rows for each date
+    val n: Int = 2  //variable to get the top 2 rows for each date
 
     //First approach using window.partitionBy
     findTopNWithPartitionBy(parsedDF, n, "ipAddress", spark)
