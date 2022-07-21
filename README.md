@@ -1,7 +1,7 @@
 # ApacheLogAnalysis
 Spark Scala project for Apache Access log analysis
 
-### My understanding of the requirement
+### Requirement
 1. Read the Apache Access Log as source data from an FTP location
    - If the FTP is not accessible use a GIT hub location as secondary source
 2. Parse the file and extract key fields like SourceIP/Hostname, request date, end point (requested resource), HTTP response code
@@ -26,7 +26,7 @@ Spark Scala project for Apache Access log analysis
 3. Run the program using
    - docker run access-analysis-image
 
-### What can be done better (if I had more time)
+### What can be done better
 1. Write Unit tests for all the methods of AccessLogAnalysisMain
 2. Analyze the df.explain() output to improve the performance
 3. All parameters like "n", source primary/secondary urls are in the code. They can be externalized to be passed through Docker
